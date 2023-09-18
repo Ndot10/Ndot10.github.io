@@ -4,7 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" style="display: none;">
         <script>
-            document.location.href = document.location.pathname.slice(document.location.pathname.length);
+            let prospectiveRedrectURL = document.location.href.slice(document.location.origin.length + document.location.pathname.length);
+            if (new URL(prospectiveRedrectURL, document.location.origin).host != document.location.host) {
+                document.location.href = document.location.href.slice(document.location.origin.length + document.location.pathname.length);
+            }
         </script>
     </head>
 </html>
