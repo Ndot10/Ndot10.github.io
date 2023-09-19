@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" style="display: none;">
         <script>
-            let redrectLink = document.location.href.slice(document.location.origin.length + document.location.pathname.length);
-            let redirectURL = new URL(redrectLink, document.location.origin).host != document.location.host
+            let redrectLink = window.location.href.slice(window.location.origin.length + window.location.pathname.length + 1);
+            let redirectURL = new URL(redrectLink, window.location.origin);
 
-            if (redirectURL) {
-                document.location.href = document.location.href.slice(document.location.origin.length + document.location.pathname.length);
+            if (redirectURL.host != window.location.host) {
+                window.location.href = redrectLink;
             } else {
-                document.body.insertAdjacentText(0, "The URL '" + redrectLink + "' is a page on this website: " + redirectURL)
+                console.log("The URL '" + redrectLink + "' is a page on this website: " + redirectURL)
             }
         </script>
     </head>
